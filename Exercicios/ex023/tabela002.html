@@ -13,16 +13,28 @@
             width: 500px;
             border-collapse: collapse;
         }
+        caption{
+            font-size: 1.5em;
+            font-weight: bold;
+            padding: 10px;
+            background-color: lightgray;
+        }
         td, th{
             border: 1px solid black;
             padding: 10px;
         }
         thead, tfoot{
-            background-color: gray;
+            background-color: rgb(24, 24, 24);
             color: white;
         }
         td.num{
             text-align: right;
+        }
+        
+        tbody >tr:nth-child(odd){
+            /*Essa é a declaração para tornar a tabela zebrada
+            odd, even ou 2n, 3n, 3n-1 serão usados para definir quais linhas serão afetadas. */
+            background-color: lightgray;
         }
     </style>
 </head>
@@ -30,6 +42,7 @@
     <!--
         ANATOMIA DE TABELA (Simples)
         TABLE = tabela
+            CAPTION 
             THEAD
                 TR, TD, TH
             TBODY
@@ -39,10 +52,11 @@
     -->
     <h1>Tabelas Grandes</h1>
     <table>
+        <caption>População das unidades Federativas</caption>
         <thead>
             <tr>
-                <th>Estado</th>
-                <th>População</th>
+                <th scope="col">Estado</th>
+                <th scope="col">População</th>
             </tr>
         </thead>
         <tbody>
@@ -61,7 +75,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <th>Total de habitantes</th>
+                <th scope="row">Total de habitantes</th>
                 <td class="num"><strong>0000</strong></td>
             </tr>
         </tfoot>
