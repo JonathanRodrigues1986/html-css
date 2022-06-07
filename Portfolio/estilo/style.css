@@ -15,7 +15,7 @@
     --fontesecundaria: 'Bebas Neue', cursive;
     --fontetexto: 'Yanone Kaffeesatz', sans-serif;
 }
-*{
+/* *{
     margin: 0px;
     padding: 0px;
 }
@@ -144,7 +144,7 @@ div.transition-1 {
 }
 .transition-3.is-active {
     top: 0;
-} 
+}  */
 body > nav{
     margin-top: 3vw;
     padding: 0;
@@ -203,7 +203,6 @@ li {
 }
 .link:hover {
     color: var(--cordestaque);
-    font-weight: bolder;
 }
 .fa-minus {
     opacity: 0;
@@ -263,4 +262,3 @@ li a {
     opacity: 0 !important;
     transform: translate(50px, 0);
     }
-      
