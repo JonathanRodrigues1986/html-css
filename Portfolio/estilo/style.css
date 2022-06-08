@@ -14,22 +14,48 @@
     --fontetitulo: 'Dosis', sans-serif;
     --fontesecundaria: 'Bebas Neue', cursive;
     --fontetexto: 'Yanone Kaffeesatz', sans-serif;
+
+    --div-altura: 400px;
+    --div-largura: calc(var(--div-altura) * 1.5);
 }
-/* *{
+*{
     margin: 0px;
     padding: 0px;
 }
-header>h1{
+header h1{
     min-width: 100px;
     font-size: 4.5vw;
-    font-family: var(--fontetitulo);
+    font-family: var(--fontesecundaria);
     color: var(--corfonte);
     letter-spacing: 0.9vw;
     margin-left: 18vw;
-    margin-top: 5vw; 
+    margin-top: 5vw;
+    margin-right: 34.5vw;
     z-index:2; 
-    text-shadow: #332A24 10px 0px 15px;
+    text-shadow: var(--corprincipal) 10px 0px 15px;
+    position: relative;
+    box-sizing: border-box;
+    place-content: left;
+    padding-left: 9.5px;
 }
+header>h1::before {  
+    transform: scaleX(0);
+    transform-origin: bottom right;
+}
+header>h1:hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+header>h1::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    inset: 0 0 0 0;
+    background: linear-gradient(var(--corprincipal) 20%, var(--cor1));
+    z-index: -1;
+    transition: transform .3s ease;
+  }
 header span{ 
     margin-top: -11.5vw;
     margin-left: 0.8vw;
@@ -61,16 +87,16 @@ div.foto{
     border-top-left-radius: 40px;
     border-bottom-right-radius: 40px;
     margin-top: 20px;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 30px;
+    margin-right: 30px;
     position: relative;
-    height: 400px;
+    height: var(--div-altura);
     display: flex;
     justify-content: left;
     align-items: center;
     background: var(--corbackground);
 }
-div.foto:before{
+div.foto::before{
     border-top-left-radius: 40px;
     border-bottom-right-radius: 40px;
     content: '';
@@ -94,14 +120,18 @@ div.foto:after{
     z-index: -2;
     filter: blur(80px);
 }
-div.foto:before, div.foto:after{
+div.foto::before, div.foto:after{
     background: linear-gradient(235deg, var(--cor1), var(--cor2));
 }
 img{
-    max-width: 110%;
+    position: absolute;
     max-height: 110%;
     margin-left: 2vw;
     margin-top: 3vw;
+    z-index: 5;
+}
+div{
+    display:flex;
 }
 div.transition-1 {
     position: fixed;
@@ -144,56 +174,46 @@ div.transition-1 {
 }
 .transition-3.is-active {
     top: 0;
-}  */
-body > nav{
-    margin-top: 3vw;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: auto;
-    width: auto;
-    }
+}
 .navigationWrapper {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
-    background-color: var(--corprincipal);
-    box-shadow: 0 5px 15px 0 var(--corprincipaltransparente);
+    padding: 20px;
+    background-color: var(--corbackground);
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
     color: var(--corfonte);
     text-transform: uppercase;
-    overflow: hidden;
+    overflow: visible;
     width: auto;
-    }
-.logoWrapper {
+}
+.navigationWrapper .logoWrapper {
     display: flex;
 }
-.stylish {
-font-weight: bold;
+.navigationWrapper .logoWrapper .stylish {
+    font-weight: bold;
 }
-.logo {
+.navigationWrapper .logoWrapper .logo {
     padding-left: 4px;
     color: var(--cordestaque);
 }
-.navigation {
+.navigationWrapper .navigation {
     display: flex;
     list-style-type: none;
 }
-li {
+.navigationWrapper .navigation li {
     opacity: 1;
     list-style-type: none;
     color: var(--corfonte);
     text-decoration: none;
     transition: all 0.3s ease-in-out;
 }
-.parent {
+.navigationWrapper .navigation .parent {
     padding: 0 10px;
     cursor: pointer;
 }
-.link {
+.navigationWrapper .navigation .parent .link {
     position: relative;
     display: flex;
     align-items: center;
@@ -201,64 +221,76 @@ li {
     transition: all 0.3s ease-in-out;
     color: var(--corfonte);
 }
-.link:hover {
+.navigationWrapper .navigation .parent .link:hover {
     color: var(--cordestaque);
 }
-.fa-minus {
+.navigationWrapper .navigation .parent .link .fa-minus {
     opacity: 0;
     transition: all 0.3s ease-in-out;
     position: absolute;
     left: -16px;
     top: 3px;
 }
-.fa-plus {
+.navigationWrapper .navigation .parent .link .fa-plus {
     opacity: 1;
     transition: all 0.3s ease-in-out;
 }
-.fas {
-    color: #ea4f4c;
+.navigationWrapper .navigation .parent .link .fas {
+    color: var(--cordestaque);
     margin: -2px 4px 0;
     font-size: 10px;
     transition: all 0.3s ease-in-out;
 }
-.subnavigation {
+.navigationWrapper .navigation .subnavigation {
     display: none;
     list-style-type: none;
-    width: auto;
+    width: 500px;
     position: absolute;
     top: 40%;
     left: 25%;
     margin: auto;
     transition: all 0.3s ease-in-out;
-    background-color: var(--cor2);
+    background-color: var(--corbackground);
 }
-li a {
+.navigationWrapper .navigation .subnavigation li a {
     font-size: 17px;
     padding: 0 5px;
 }
 .active.parent {
     transform: translate(-40px, -25px);
 }
-.link {
+.active.parent .link {
     font-size: 12px;
-}  
-.fa-minus {
+}
+.active.parent .link .fa-minus {
     opacity: 1 !important;
     font-size: 8px;
 }
-.fa-plus {
-    opacity: 0 !important;
+.active.parent .link .fa-plus {
+opacity: 0 !important;
 }
-.subnavigation {
+.active.parent .subnavigation {
     display: flex;
-}    
-.active#clients.subnavigation {
-        transform: translate(-150px, 17px);
-    }
-.active#services.subnavigation {
-        transform: translate(-290px, 17px);
-    }
+}
+.active#clients .subnavigation {
+    transform: translate(-150px, 17px);
+}
+.active#services .subnavigation {
+    transform: translate(-290px, 17px);
+}
 .invisible {
     opacity: 0 !important;
-    transform: translate(50px, 0);
-    }
+    transform: translate(50px, 0); 
+}
+i.fa-plus::after {
+    content: '\2963';
+    font-size: 15px;
+    font-weight: bolder;
+    color: var(--cordestaque);
+}
+i.fa-minus::before {
+    content: '\2965';
+    font-size: 15px;
+    font-weight: bolder;
+    color: var(--cordestaque);
+}
