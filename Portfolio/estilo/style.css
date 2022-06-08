@@ -130,9 +130,6 @@ img{
     margin-top: 3vw;
     z-index: 5;
 }
-div{
-    display:flex;
-}
 div.transition-1 {
     position: fixed;
     top: 0;
